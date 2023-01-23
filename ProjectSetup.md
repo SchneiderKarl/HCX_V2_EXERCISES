@@ -19,14 +19,19 @@
 
 ## Access SAP Business Application Studio
 
->(recommend use an incognito tab in one of the following Browser and their latest browser version https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/8f46c6e6f86641cc900871c903761fd4.html#availability)
->- Mozilla Firefox
->- Google Chrome
->- Microsoft Edge
+> To realize database projects we use today mainly the SAP Businness Application Studio (BAS for short).
+> It is recommended to use in an incognito tab of the following three browsers with the latest version. https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/8f46c6e6f86641cc900871c903761fd4.html#availability)
+> - Mozilla Firefox
+> - Google Chrome
+> - Microsoft Edge
 
-Click [here](link|bas) to open the SAP Business Application Studio (BAS for short).
+Click [here](link|bas) to open the SAP Business Application Studio.
 
 ## Create Development Space in BAS
+
+> Before you can start your project you must first create a Development Space within BAS. 
+> > A dev space is a development environment with the tools, capabilities, and resources needed for developing your application.
+> > A dev space provides tailored tools and pre-installed runtimes for your business scenario. This simplifies and saves time in setting up your development environment and allows you to efficiently develop, test, build, and run your solution locally or in the cloud.
 
 1) Click on **Create Dev Space** to create a new development environment for your project.
 
@@ -48,6 +53,9 @@ Click [here](link|bas) to open the SAP Business Application Studio (BAS for shor
 ![img](Images/Image_ProjectSetup_Create-Development-Space-in-BAS_04.png)
 
 ## Customize the default BAS layout
+
+> For a better orientation in SAP BAS we adapt the default layout for our needs.
+> >(If possible set default editors for hdi artifacts)
 
 1) Click on the **Customize Layout...** Icon on the top right corner. 
 
@@ -74,11 +82,9 @@ Click [here](link|bas) to open the SAP Business Application Studio (BAS for shor
 
 ![img](Images/Image_ProjectSetup_Customize-the-default-BAS-layout_06.png)
 
->(If possible set default editors for hdi artifacts)
-
 ## Set Cloud Foundry Endpoint
 
-> To start developing, you need to tell BAS where you want to deploy your project.
+> You will connect your development space in SAP BAS to Cloud Foundry, so we can later deploy the project to the SAP HANA Cloud running on the Cloud Foundry environment.
 
 ### Option A)
 1)  1) Click on **View** in the Menu Bar
@@ -100,7 +106,7 @@ Click [here](link|bas) to open the SAP Business Application Studio (BAS for shor
 
 4) Select the following options in the Cloud Foundry Target wizard:
    1) **Cloud Foundry Organization**: `SharedServices`
-   2) **Cloud Foundry Space**: `dev`
+   2) **Cloud Foundry Space**: `HANA Cloud Experience`
    3) Then click on **Apply**
 
 ![img](Images/Image_ProjectSetup_Set-Cloud-Foundry-Endpoint-Option-A_04.png)
@@ -114,7 +120,7 @@ Click [here](link|bas) to open the SAP Business Application Studio (BAS for shor
 
 ![img](Images/Image_ProjectSetup_Set-Cloud-Foundry-Endpoint-Option-B_01.png)
 
-2) Expand the **Services**
+1) Expand **Services**
 
 ![img](Images/Image_ProjectSetup_Set-Cloud-Foundry-Endpoint-Option-B_02.png)
 
@@ -132,7 +138,7 @@ Click [here](link|bas) to open the SAP Business Application Studio (BAS for shor
 
 5) Select the following options in the Cloud Foundry Target wizard:
    1) **Cloud Foundry Organization**: `SharedServices`
-   2) **Cloud Foundry Space**: `dev`
+   2) **Cloud Foundry Space**: `HANA Cloud Experience`
    3) Then click on **Apply**
 
 ![img](Images/Image_ProjectSetup_Set-Cloud-Foundry-Endpoint-Option-B_05.png)
@@ -143,40 +149,74 @@ Click [here](link|bas) to open the SAP Business Application Studio (BAS for shor
 
 ## Clone or import the preconfigured project
 
+> You will import a HDI project prepared by us into BAS.
+
 1) Click on Clone from Git or Import
+
+
 2) Insert the following link in the text box at the top: ``xxx``
+
+
 3) After you pressed enter, the cloning process starts.  When it is done you will receive a notification at the bottom right.
 
 ## Open the project
 
+> You will open the imported project to the workspace to start working on it.
+
 1) To open the cloned project, click on **Open**.
+
+
 2) On the left, you should now see the imported project. In this area, you design your database objects. Click on the **arrow** next to the project name to expand the folder structure.
+
+
 3) *Explain folder structure and files optional* - design time
+
+
 4) optional Change mta project name by appending Username
+
 
 ## SAP HANA PROJECTS tab
 
+> The SAP HANA PROJECTS tab allows us to deploy the created design-time objects to the SAP HANA Cloud runtime.
+
 1) *Explain structure and runtime optional*
-2) To bind your project to an HDI Container, you will need to use the runtime area. Take the **SAP HANA Projects** tab, located at the bottom of your screen, **expand**, and **pull it up to the middle of the screen**. For a better overview, **expand the folders**. 
+
+
+2) To bind your project to an HDI Container, you will need to use the runtime area. Take the **SAP HANA Projects** tab, located at the bottom of your screen, **expand**, and **pull it up to the middle of the screen**. For a better overview, **expand the folders**.
+
 
 ## Bind SAP HDI Container
 
-1) SAP HDI stands for SAP HANA Deployment Infrastructure. *HDI under the Hood Video - SAP Academy*
-2) Click on the plug symbol next to the **hdi_hcx-db** to create an HDI Container.
-3) The command line at the top should pop up. Click on **+ Create a new service** **instance**.
-4) Behind the given name add a **-YOURNAME** and hit enter.
-5) Building your HDI container initially takes around one and a half minutes.
+> SAP HDI stands for SAP HANA Deployment Infrastructure. *HDI under the Hood Video - SAP Academy*
+
+
+1) Click on the plug symbol next to the **hdi_hcx-db** to create an HDI Container.
+
+
+2) The command line at the top should pop up. Click on **+ Create a new service** **instance**.
+
+
+3) Behind the given name add a **-YOURNAME** and hit enter.
+
+
+4) Building your HDI container initially takes around one and a half minutes.
+
 
 ## Bind existing User-Provided Service instance
 
-1) To access data that resides outside of the HDI Container and access remote sources that are already created, we will need to use a user-provided service. 
-2) Click on the **Plug-Symbol** on the **cross-container-service-1** in the bottom part to bind this service (if you do not see the Plug-Symbol, hover over it).
-3) Select the first binding option: **Bind to the 'HCX_SCHEMA_UPS' service**
-4) If successful, you should see the following message:
+> To access data that resides outside of the HDI Container and access remote sources that are already created, we will need to use a user-provided service. 
+
+1) Click on the **Plug-Symbol** on the **cross-container-service-1** in the bottom part to bind this service (if you do not see the Plug-Symbol, hover over it).
 
 
-(Idea: Bevor every Chapter short Info what is happening exactly)
+2) Select the first binding option: **Bind to the 'HCX_SCHEMA_UPS' service**
+
+
+3) If successful, you should see the following message:
+
 
 ## Deploy the project to HANA Cloud
+
+> Deploying...
 
 Click on the rocket symbol to **deploy** the design-time objects to the SAP HANA Cloud runtime. The terminal opens and lets you know if the deployment was successful.

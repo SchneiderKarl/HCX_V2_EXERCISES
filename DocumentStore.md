@@ -1,7 +1,17 @@
-# Prereq folder
+# Document Store (optional)
+
+## Table of contents 
+
+- [Document Store (optional)](#document-store-optional)
+  - [Table of contents](#table-of-contents)
+  - [Prereq folder](#prereq-folder)
+  - [Exercise](#exercise)
+
+
+## Prereq folder
 - .csv with linebreaks and json input data or Import data?
 
-# Exercise
+## Exercise
 
 - Create Collection
 - Create tabledata
