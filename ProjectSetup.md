@@ -8,10 +8,8 @@
   - [Create Development Space in BAS](#create-development-space-in-bas)
   - [Customize the default BAS layout](#customize-the-default-bas-layout)
   - [Set Cloud Foundry Endpoint](#set-cloud-foundry-endpoint)
-    - [Option A)](#option-a)
-    - [Option B)](#option-b)
-  - [Clone or import the preconfigured project](#clone-or-import-the-preconfigured-project)
-  - [Open the project](#open-the-project)
+  - [Clone the preconfigured project](#clone-the-preconfigured-project)
+  - [Adjust structure of cloned project](#adjust-structure-of-cloned-project)
   - [SAP HANA PROJECTS tab](#sap-hana-projects-tab)
   - [Bind SAP HDI Container](#bind-sap-hdi-container)
   - [Bind existing User-Provided Service instance](#bind-existing-user-provided-service-instance)
@@ -20,7 +18,7 @@
 ## Access SAP Business Application Studio
 
 > To realize database projects we use today mainly the SAP Businness Application Studio (BAS for short).
-> It is recommended to use in an incognito tab of the following three browsers with the latest version. https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/8f46c6e6f86641cc900871c903761fd4.html#availability)
+> It is recommended to use in an incognito tab of the following three browsers with the latest version. <!-- https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/8f46c6e6f86641cc900871c903761fd4.html#availability -->
 > - Mozilla Firefox
 > - Google Chrome
 > - Microsoft Edge
@@ -55,7 +53,7 @@ Click [here](link|bas) to open the SAP Business Application Studio.
 ## Customize the default BAS layout
 
 > For a better orientation in SAP BAS we adapt the default layout for our needs.
-> >(If possible set default editors for hdi artifacts)
+> <!-- (If possible set default editors for hdi artifacts)-->
 
 1) Click on the **Customize Layout...** Icon on the top right corner. 
 
@@ -86,6 +84,7 @@ Click [here](link|bas) to open the SAP Business Application Studio.
 
 > You will connect your development space in SAP BAS to Cloud Foundry, so we can later deploy the project to the SAP HANA Cloud running on the Cloud Foundry environment.
 
+<!--
 ### Option A)
 1)  1) Click on **View** in the Menu Bar
     2) Then click on **Command Palette...**
@@ -106,7 +105,7 @@ Click [here](link|bas) to open the SAP Business Application Studio.
 
 4) Select the following options in the Cloud Foundry Target wizard:
    1) **Cloud Foundry Organization**: `SharedServices`
-   2) **Cloud Foundry Space**: `HANA Cloud Experience`
+   2) **Cloud Foundry Space**: `HANA Cloud Experience V2`
    3) Then click on **Apply**
 
 ![img](Images/Image_ProjectSetup_Set-Cloud-Foundry-Endpoint-Option-A_04.png)
@@ -115,12 +114,14 @@ Click [here](link|bas) to open the SAP Business Application Studio.
 
 ![img](Images/Image_ProjectSetup_Set-Cloud-Foundry-Endpoint-Option-A_05.png)
 
+
 ### Option B)
+-->
 1) Click on the **Cloud Foundry** Icon on the Activity Bar on the left side.
 
 ![img](Images/Image_ProjectSetup_Set-Cloud-Foundry-Endpoint-Option-B_01.png)
 
-1) Expand **Services**
+2) Expand **Services**
 
 ![img](Images/Image_ProjectSetup_Set-Cloud-Foundry-Endpoint-Option-B_02.png)
 
@@ -138,7 +139,7 @@ Click [here](link|bas) to open the SAP Business Application Studio.
 
 5) Select the following options in the Cloud Foundry Target wizard:
    1) **Cloud Foundry Organization**: `SharedServices`
-   2) **Cloud Foundry Space**: `HANA Cloud Experience`
+   2) **Cloud Foundry Space**: `HANA Cloud Experience V2`
    3) Then click on **Apply**
 
 ![img](Images/Image_ProjectSetup_Set-Cloud-Foundry-Endpoint-Option-B_05.png)
@@ -147,39 +148,53 @@ Click [here](link|bas) to open the SAP Business Application Studio.
 
 ![img](Images/Image_ProjectSetup_Set-Cloud-Foundry-Endpoint-Option-B_06.png)
 
-## Clone or import the preconfigured project
+## Clone the preconfigured project
 
-> You will import a HDI project prepared by us into BAS.
+> You will import a HDI project prepared by us into BAS and open it up.
 
-1) Click on Clone from Git or Import
+1) Click on **Clone from Git**
 
+![img](Images/Image_ProjectSetup_Clone-the-preconfigured-project_01.png)
 
-2) Insert the following link in the text box at the top: ``xxx``
+1) Insert the following link in the text box at the top: `https://github.com/SchneiderKarl/HCX_V2.git`
 
+![img](Images/Image_ProjectSetup_Clone-the-preconfigured-project_02.png)
 
 3) After you pressed enter, the cloning process starts.  When it is done you will receive a notification at the bottom right.
 
-## Open the project
+![img](Images/Image_ProjectSetup_Clone-the-preconfigured-project_03.png)
+
 
 > You will open the imported project to the workspace to start working on it.
 
-1) To open the cloned project, click on **Open**.
+4) To open the cloned project, click on **Open**.
+
+![img](Images/Image_ProjectSetup_Clone-the-preconfigured-project_04.png)
+
+## Adjust structure of cloned project
+
+<!-- optional Change mta project name by appending Username, *Explain folder structure and files optional* - design time -->
+
+> 
+
+![img](Images/Image_ProjectSetup_Clone-the-preconfigured-project_05.png)
+
+1) On the left, you should now see the imported project. In this area, you design your database objects. Click on the **arrow** next to the project name **HCX_V2** to expand the folder structure. Expand also the folder **db** and after it the folder **src**
 
 
-2) On the left, you should now see the imported project. In this area, you design your database objects. Click on the **arrow** next to the project name to expand the folder structure.
+
+2) It should look like this in the end.
 
 
-3) *Explain folder structure and files optional* - design time
-
-
-4) optional Change mta project name by appending Username
 
 
 ## SAP HANA PROJECTS tab
 
-> The SAP HANA PROJECTS tab allows us to deploy the created design-time objects to the SAP HANA Cloud runtime.
+<!-- *Explain structure and runtime optional* -->
 
-1) *Explain structure and runtime optional*
+> The SAP HANA PROJECTS tab allows you to deploy the created design-time objects to the SAP HANA Cloud runtime. 
+
+1) 
 
 
 2) To bind your project to an HDI Container, you will need to use the runtime area. Take the **SAP HANA Projects** tab, located at the bottom of your screen, **expand**, and **pull it up to the middle of the screen**. For a better overview, **expand the folders**.
