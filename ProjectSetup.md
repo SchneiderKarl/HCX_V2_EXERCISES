@@ -18,8 +18,8 @@
 
 ## Access SAP Business Application Studio
 
-> To realize database projects we use today mainly the SAP Businness Application Studio (BAS for short).
-> It is recommended to use in an incognito tab of the following three browsers with the latest version. <!-- https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/8f46c6e6f86641cc900871c903761fd4.html#availability -->
+> To realize database projects we mainly use the SAP Businness Application Studio (BAS for short).
+> It is recommended to use the incognito tab of one of the following three browsers with the latest version. <!-- https://help.sap.com/docs/SAP%20Business%20Application%20Studio/9d1db9835307451daa8c930fbd9ab264/8f46c6e6f86641cc900871c903761fd4.html#availability -->
 > - Mozilla Firefox
 > - Google Chrome
 > - Microsoft Edge
@@ -53,7 +53,7 @@ Click [here](https://sharedservices.eu10cf.applicationstudio.cloud.sap/index.htm
 
 ## Customize the default BAS layout
 
-> For a better orientation in SAP BAS we adapt the default layout for our needs.
+> For a better orientation in SAP BAS we adapt the default layout to our needs.
 > <!-- (If possible set default editors for hdi artifacts)-->
 
 1) Click on the **Customize Layout...** Icon on the top right corner. 
@@ -157,18 +157,22 @@ Click [here](https://sharedservices.eu10cf.applicationstudio.cloud.sap/index.htm
 
 ![img](Images/Image_ProjectSetup_Clone-the-preconfigured-project_01.png)
 
-1) Insert the following link in the text box at the top: `https://github.com/SchneiderKarl/HCX_V2.git`
+2) Insert the following link in the text box at the top: `https://github.com/SchneiderKarl/HCX_V2.git`
+   
+   After you pressed enter, the cloning process starts.
 
 ![img](Images/Image_ProjectSetup_Clone-the-preconfigured-project_02.png)
 
-3) After you pressed enter, the cloning process starts.  When it is done you will receive a notification at the bottom right.
+<!-- Screenshot mit OKay 
+
+1) After you pressed enter, the cloning process starts.  When it is done you will receive a notification at the bottom right.
 
 ![img](Images/Image_ProjectSetup_Clone-the-preconfigured-project_03.png)
-
+-->
 
 > You will open the imported project to the workspace to start working on it.
 
-4) To open the cloned project, click on **Open**.
+3) To open the cloned project, click on **Open**.
 
 ![img](Images/Image_ProjectSetup_Clone-the-preconfigured-project_04.png)
 
@@ -197,7 +201,7 @@ Click [here](https://sharedservices.eu10cf.applicationstudio.cloud.sap/index.htm
 
 > <!--SAP HDI stands for SAP HANA Deployment Infrastructure. *HDI under the Hood Video - SAP Academy*-->
 
-1) Click on the plug symbol next to the **hdi_hcx-db** to create an HDI Container.
+1) Click on the plug symbol next to the **hdi_db** to create an HDI Container.
 
 ![img](Images/Image_ProjectSetup__03.png)
 

@@ -25,7 +25,7 @@
 ![img](Images/Image_DataIntegration__02.png)
 
 3) Create SAP HANA Database Artifact wizard:
-   1) **Path**: `/home/user/porjects/HCX_V2/db/src/DataIntegration`
+   1) **Path**: `/home/user/projects/HCX_V2/db/src/DataIntegration/`
    2) **Namespace**: `hcx.db.DataIntegration` (should be automatically filled)
    3) **Database Version**: `HANA Cloud`
    4) **Artifact type**: `Virtual Table (hdbvirtualtable)`
@@ -38,7 +38,7 @@
 
 ![img](Images/Image_DataIntegration__04.png)
 
-5) Select **Virtual Table Editor** as the default editor.
+5) Select **Virtual Table Editor** as the default editor. Confirm with **Save**.
 
 ![img](Images/Image_DataIntegration__05.png)
 
@@ -56,13 +56,13 @@
 
 ![img](Images/Image_DataIntegration__10.png)
 
-9) Now click again on the **VT_PRODUCTS.hdbvirtualtable** file.
+9) Now click again on the **VT_PRODUCTS.hdbvirtualtable** file. Click on **Auto-fix**.
    Virtual Table Editor wizard: (You can use the three dots to get suggestions)
    1) **Virtual table name**: `hcx.db.DataIntegration::VT_PRODUCTS`
    2) **Remoute source name**: `HCX_HANA`
    3) **Database name**: `<NULL>`
    4) **Schema name**: `HCX_USER`
-   5) **Object name**: `EMPLOYEES`
+   5) **Object name**: `PRODUCTS`
 
 ![img](Images/Image_DataIntegration__07.png)
 
@@ -111,7 +111,7 @@
 ![img](Images/Image_DataIntegration__02.png)
 
 3) Create SAP HANA Database Artifact wizard:
-   1) **Path**: `/home/user/porjects/HCX_V2/db/src/DataIntegration`
+   1) **Path**: `/home/user/projects/HCX_V2/db/src/DataIntegration/`
    2) **Namespace**: leave it `hcx.db.DataIntegration`
    3) **Database Version**: `HANA Cloud`
    4) **Artifact type**: `Replication Task (hdbreptask)`
@@ -146,7 +146,7 @@
 
 ## Start the Replication Task
 
-1. Switch back to SAP HANA Database Explorer and refresh the catalog. Now you can see that 4 new tables were created by the previous deployment.
+1. Switch back to SAP HANA Database Explorer and refresh the catalog.
 
 ![img](Images/Image_DataIntegration__23.png)
 
@@ -193,7 +193,7 @@
 2) Type in `SAP HANA: Create HANA Database Artifact`
 
 3) Create SAP HANA Database Artifact wizard:
-   1) **Path**: `/home/user/porjects/HCX_V2/db/src/DataIntegration`
+   1) **Path**: `/home/user/projects/HCX_V2/db/src/DataIntegration/`
    2) **Namespace**: leave it `hcx.db.DataIntegration`
    3) **Database Version**: `HANA Cloud`
    4) **Artifact type**: `Flow Graph (hdbflowgraph)`
@@ -215,7 +215,7 @@
 
 ## Compare virtualized and replicated table data
 
-1. Open the SQL console and paste the following code into it and run it
+1. Go back to the SQL console and paste the following code into it and run it
 
    ```sql
    SELECT * FROM "hcx.db.DataIntegration::RT_CUSTOMERS";

@@ -10,10 +10,10 @@ Exercises for SAP HANA Cloud Experience Workshop (Version 2 - 2023)
 
 ### Optional Exercises 
 
+- [Spatial](Spatial.md)
+- [Data Anonymization](DataAnonymization.md)
 - [Data Tiering](DataTiering.md)
 - [Calculation View Modeling](CalculationViews.md)
-- [Data Anonymization](DataAnonymization.md)
-- [Spatial](Spatial.md)
 - [Document Store](DocumentStore.md)
 <!-- - Data Lake-->
 <!-- - Graph-->
