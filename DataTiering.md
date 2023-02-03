@@ -21,16 +21,8 @@
   - Scheduled job to export to data lake 
 - insert into virtual table with newer date to create new partition
 - Create View that is combining all if needed with Table for input of the years so not all is fetched (maybe in default from Data Integration which gets updated if needed)
-- 
-
-[hello](link|bas) hello [bas]
-
-{link|bas}
-
-{links|bas}: hello
-
-[links|bas]:hello
-
-[bas]:basLink
+- evtl View mit beiden Daten auch in Calc View nutzen?!
 
 > Q4 planned integration of HDI and Data Lake
+
+< [Back to Overview](README.md)

@@ -9,11 +9,12 @@
   - [Customize the default BAS layout](#customize-the-default-bas-layout)
   - [Set Cloud Foundry Endpoint](#set-cloud-foundry-endpoint)
   - [Clone the preconfigured project](#clone-the-preconfigured-project)
-  - [Adjust structure of cloned project](#adjust-structure-of-cloned-project)
+  - [Open the project](#open-the-project)
   - [SAP HANA PROJECTS tab](#sap-hana-projects-tab)
   - [Bind SAP HDI Container](#bind-sap-hdi-container)
   - [Bind existing User-Provided Service instance](#bind-existing-user-provided-service-instance)
   - [Deploy the project to HANA Cloud](#deploy-the-project-to-hana-cloud)
+  - [Open the SAP HANA Database Explorer](#open-the-sap-hana-database-explorer)
 
 ## Access SAP Business Application Studio
 
@@ -23,7 +24,7 @@
 > - Google Chrome
 > - Microsoft Edge
 
-Click [here](link|bas) to open the SAP Business Application Studio.
+Click [here](https://sharedservices.eu10cf.applicationstudio.cloud.sap/index.html) to open the SAP Business Application Studio.
 
 ## Create Development Space in BAS
 
@@ -171,21 +172,15 @@ Click [here](link|bas) to open the SAP Business Application Studio.
 
 ![img](Images/Image_ProjectSetup_Clone-the-preconfigured-project_04.png)
 
-## Adjust structure of cloned project
+## Open the project
 
 <!-- optional Change mta project name by appending Username, *Explain folder structure and files optional* - design time -->
 
 > 
 
-![img](Images/Image_ProjectSetup_Clone-the-preconfigured-project_05.png)
+1) On the left, you should now see the imported project. In this area, you design your database objects. Click on the **arrow** next to the project name **HCX_V2** to expand the folder structure. Expand also the folder **db** and after it the folder **src**. It should look like this in the end.
 
-1) On the left, you should now see the imported project. In this area, you design your database objects. Click on the **arrow** next to the project name **HCX_V2** to expand the folder structure. Expand also the folder **db** and after it the folder **src**
-
-
-
-2) It should look like this in the end.
-
-
+![img](Images/Image_ProjectSetup__01.png)
 
 
 ## SAP HANA PROJECTS tab
@@ -194,27 +189,29 @@ Click [here](link|bas) to open the SAP Business Application Studio.
 
 > The SAP HANA PROJECTS tab allows you to deploy the created design-time objects to the SAP HANA Cloud runtime. 
 
-1) 
+1) Take the SAP HANA Projects tab, located at the bottom of your screen, expand, and pull it up to the middle of the screen. For a better overview, expand the **HCX_V2/db**. It should look like this in the end.
 
-
-2) To bind your project to an HDI Container, you will need to use the runtime area. Take the **SAP HANA Projects** tab, located at the bottom of your screen, **expand**, and **pull it up to the middle of the screen**. For a better overview, **expand the folders**.
-
+![img](Images/Image_ProjectSetup__02.png)
 
 ## Bind SAP HDI Container
 
-> SAP HDI stands for SAP HANA Deployment Infrastructure. *HDI under the Hood Video - SAP Academy*
-
+> <!--SAP HDI stands for SAP HANA Deployment Infrastructure. *HDI under the Hood Video - SAP Academy*-->
 
 1) Click on the plug symbol next to the **hdi_hcx-db** to create an HDI Container.
 
+![img](Images/Image_ProjectSetup__03.png)
 
-2) The command line at the top should pop up. Click on **+ Create a new service** **instance**.
+2) The command line at the top should pop up. Click on **Bind to the default service instance**.
 
+![img](Images/Image_ProjectSetup__04.png)
 
-3) Behind the given name add a **-YOURNAME** and hit enter.
+3) Building your HDI container initially takes around one and a half minutes.
 
+![img](Images/Image_ProjectSetup__05.png)
 
-4) Building your HDI container initially takes around one and a half minutes.
+4) After the process of creating and binding of the HDI container has ended a pop up ist opening. Click on **Enable & do not ask again**
+
+![img](Images/Image_ProjectSetup__09.png)
 
 
 ## Bind existing User-Provided Service instance
@@ -223,15 +220,46 @@ Click [here](link|bas) to open the SAP Business Application Studio.
 
 1) Click on the **Plug-Symbol** on the **cross-container-service-1** in the bottom part to bind this service (if you do not see the Plug-Symbol, hover over it).
 
+![img](Images/Image_ProjectSetup__06.png)
 
-2) Select the first binding option: **Bind to the 'HCX_SCHEMA_UPS' service**
+2) Select the first binding option: **Bind to the 'REMOTE_SOURCE_GRANTOR_UPS' service**
 
+![img](Images/Image_ProjectSetup__07.png)
 
 3) If successful, you should see the following message:
+
+![img](Images/Image_ProjectSetup__08.png)
 
 
 ## Deploy the project to HANA Cloud
 
-> Deploying...
+> <!--Deploying...-->
 
-Click on the rocket symbol to **deploy** the design-time objects to the SAP HANA Cloud runtime. The terminal opens and lets you know if the deployment was successful.
+1) Click on the rocket symbol to **deploy** the design-time objects to the SAP HANA Cloud runtime. 
+
+![img](Images/Image_ProjectSetup__10.png)
+
+2) The terminal opens and first of all some needed node modules will be installed. After this is done the deployment to HANA Cloud starts. After this has come to an end you see a massage if the deployment was successful.
+
+![img](Images/Image_ProjectSetup__11.png)
+
+
+## Open the SAP HANA Database Explorer
+
+1) Click on **Open HDI container**
+
+![img](Images/Image_ProjectSetup__12.png)
+
+2) Click on **Open**
+
+![img](Images/Image_ProjectSetup__13.png)
+
+3) Select **Sign in with default identity provider**
+
+![img](Images/Image_ProjectSetup__14.png)
+
+4) You can see your HDI container in the SAP HANA Cloud runtime. The database objects are organized by their types in a catalog. Leave the Database Explorer tab open and return to BAS.
+
+![img](Images/Image_ProjectSetup__15.png)
+
+< [Back to Overview](README.md)
