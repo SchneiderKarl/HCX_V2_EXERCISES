@@ -401,8 +401,9 @@ ORDER BY COUNT DESC;
 ![img](Images/Image_Spatial__32.png)
 
 
+---
 > todo
-
+---
 
 3. It’s interesting to know where all locations are in the Hexagon. You can do this by executing the following commands and double-click on the result:
 ```sql
