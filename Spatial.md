@@ -24,10 +24,10 @@
 
 ## Create a table with all countries of the world and their shapes
 
-> In this section, a world map with countries as a table is loaded into the SAP HANA Cloud Database in the form of a shapefile stored locally on the computer.
+> In this section, a world map with countries as a table is loaded into the SAP HANA Cloud Database. The data is already provided by us in the /Spatial/WORLD_COUNTRIES.csv file
 
 1) 1) Click on **View** in the Menu Bar
-   2) Then click on **Command Palette...**
+   1) Then click on **Command Palette...**
 
 ![img](Images/Image_DataIntegration__01.png)
 
@@ -133,7 +133,7 @@ COLUMN TABLE "hcx.db.Spatial::WORLD_COUNTRIES" (
 
 > In this section, we want to take a look at the country borders of Germany that we uploaded in the previous step using the "WORLD_COUNTRIES" table.
 
-1. Switch to the SAP HANA Database Explorer. Left-Click on Tables and right-click on **WORLD_COUNTRIES** and then click **Open**.
+1. Switch to the SAP HANA Database Explorer. Left-Click on Tables and search for ``WORLD_COUNTRIES``. Then right-click on **WORLD_COUNTRIES** and then click **Open**.
 
 ![img](Images/Image_Spatial__08.png)
 
@@ -205,7 +205,7 @@ FROM "hcx.db.DataIntegration::RT_CUSTOMERS";
    2) **Namespace**: `hcx.db.Spatial` (should be automatically filled)
    3) **Database Version**: `HANA Cloud`
    4) **Artifact type**: `Table (hdbtable)`
-   5) **Name**: `CUSOTMER_LOCATION`
+   5) **Name**: `CUSTOMER_LOCATION`
    6) Click **Create**
 
 ![img](Images/Image_Spatial__16.png)
@@ -287,7 +287,7 @@ WHERE "COUNTRY" = 'Germany'
    2) **Namespace**: `hcx.db.Spatial` (should be automatically filled)
    3) **Database Version**: `HANA Cloud`
    4) **Artifact type**: `Table (hdbtable)`
-   5) **Name**: `CUSOTMER_LOCATION_GERMANY`
+   5) **Name**: `CUSTOMER_LOCATION_GERMANY`
    6) Click **Create**
 
 ![img](Images/Image_Spatial__22.png)
