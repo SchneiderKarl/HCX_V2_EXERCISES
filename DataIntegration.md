@@ -25,7 +25,7 @@
 ![img](Images/Image_DataIntegration__02.png)
 
 3) Create SAP HANA Database Artifact wizard:
-   1) **Path**: `/home/user/projects/HCX_V2/db/src/DataIntegration/`
+   1) **Path**: `/home/user/projects/HCX_V2/db/src/DataIntegration`
    2) **Namespace**: `hcx.db.DataIntegration` (should be automatically filled)
    3) **Database Version**: `HANA Cloud`
    4) **Artifact type**: `Virtual Table (hdbvirtualtable)`

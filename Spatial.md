@@ -35,7 +35,7 @@
 
 ![img](Images/Image_DataIntegration__02.png)
 
-3) Change the path to the Spatial folder, by clicking the folder icon
+3) Change the path to the **Spatial** folder, by clicking the folder icon
 
 ![img](Images/Image_Spatial__01.png)
 
@@ -43,12 +43,12 @@
 
 ![img](Images/Image_Spatial__02.png)
 
-5) Click on **Spatial**
+5) Click on **Spatial** and confirm with **OK**
 
 ![img](Images/Image_Spatial__03.png)
 
 6) Create SAP HANA Database Artifact wizard: 
-   1) **Path**: `/home/user/projects/HCX_V2/db/src/Spatial/`
+   1) **Path**: `/home/user/projects/HCX_V2/db/src/Spatial`
    2) **Namespace**: `hcx.db.Spatial` (should be automatically filled)
    3) **Database Version**: `HANA Cloud`
    4) **Artifact type**: `Table (hdbtable)`
@@ -84,7 +84,7 @@ COLUMN TABLE "hcx.db.Spatial::WORLD_COUNTRIES" (
 ![img](Images/Image_DataIntegration__02.png)
 
 10) Create SAP HANA Database Artifact wizard: 
-   1) **Path**: `/home/user/projects/HCX_V2/db/src/Spatial/`
+   1) **Path**: `/home/user/projects/HCX_V2/db/src/Spatial`
    2) **Namespace**: `hcx.db.Spatial` (should be automatically filled)
    3) **Database Version**: `HANA Cloud`
    4) **Artifact type**: `Table Data (hdbtabledata)`
