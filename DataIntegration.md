@@ -4,16 +4,14 @@
 
 - [Data Integration Exercise (Mandatory)](#data-integration-exercise-mandatory)
   - [Table of contents](#table-of-contents)
-  - [Create Virtual Table (or Strg+Shift+P)](#create-virtual-table-or-strgshiftp)
+  - [Create Virtual Table](#create-virtual-table)
   - [Open HDI Container in SAP HANA Database Explorer](#open-hdi-container-in-sap-hana-database-explorer)
   - [Access data of virtual table](#access-data-of-virtual-table)
   - [Create Replication Task](#create-replication-task)
   - [Start the Replication Task](#start-the-replication-task)
   - [Compare virtualized and replicated table data](#compare-virtualized-and-replicated-table-data)
-  - [Edit the Replication Task](#edit-the-replication-task)
-  - [Insert into Products source table](#insert-into-products-source-table)
 
-## Create Virtual Table (or Strg+Shift+P)
+## Create Virtual Table
 
 1) 1) Click on **View** in the Menu Bar
    2) Then click on **Command Palette...**
@@ -225,6 +223,7 @@
 
 ![img](Images/Image_DataIntegration__32.png)
 
+<!-- 
 ## Edit the Replication Task
 
 1. Switch back to BAS and open the **REPLICATIONS.hdbreptask** file. Then click on the **+** to add another table from the source system
@@ -279,7 +278,7 @@ SELECT * FROM "hcx.db.DataIntegration::RT1_PRODUCTS" WHERE PRODUCT_ID='P_9999';
 ```
 
 ![img](Images/Image_DataIntegration__54.png)
-
+-->
 <!--
 ```sql
 DELETE FROM "hcx.db.DataIntegration::VT_PRODUCTS" WHERE PRODUCT_ID='P_9999';
