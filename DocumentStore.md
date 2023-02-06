@@ -170,18 +170,45 @@ SELECT REVIEW_ID,CUSTOMER_ID,PRODUCT_ID,REVIEW_RATING,REVIEW_TEXT FROM "hcx.db.D
 
 ![img](Images/Image_DocumentStore__09.png)
 
+4. You can insert new JSON Objects to the collection.
+
 ```sql
-
-
 INSERT INTO "hcx.db.DocumentStore::REVIEWS" VALUES('{"REVIEW_ID":"R_100123","CUSTOMER_ID":"C_000000205","PRODUCT_ID":"P_0046","REVIEW_RATING":5,"REVIEW_TEXT":"Absolutly perfect"}');
+```
+
+![img](Images/Image_DocumentStore__10.png)
+
+5. Query the collection to look for the new entry.
+
+```sql
 SELECT * FROM "hcx.db.DocumentStore::REVIEWS" WHERE REVIEW_ID='R_100123';
+```
+
+![img](Images/Image_DocumentStore__11.png)
+
+6. Update the inserted entry.
+
+```sql
 UPDATE "hcx.db.DocumentStore::REVIEWS" SET REVIEW_TEXT='Hello again' WHERE REVIEW_ID='R_100123';
 SELECT * FROM "hcx.db.DocumentStore::REVIEWS" WHERE REVIEW_ID='R_100123';
+```
+
+7. Aggregate the JSON Objects
+
+```sql
 SELECT PRODUCT_ID,AVG(TO_BIGINT(REVIEW_RATING)) FROM "hcx.db.DocumentStore::REVIEWS" GROUP BY PRODUCT_ID ORDER BY PRODUCT_ID ASC;
+```
+
+![img](Images/Image_DocumentStore__12.png)
+
+8. Combine with relational data
+```sql
 WITH myView AS (SELECT PRODUCT_ID as PID,AVG(TO_BIGINT(REVIEW_RATING)) as AVGRATING FROM "hcx.db.DocumentStore::REVIEWS" GROUP BY PRODUCT_ID )
        SELECT PID,PRODUCT_NAME,AVGRATING FROM myView INNER JOIN "hcx.db.DataIntegration::VT_PRODUCTS"
        ON myView.PID = PRODUCT_ID;
 ```
+
+![img](Images/Image_DocumentStore__13.png)
 
 <!-- Nested, Arrays -->
 
