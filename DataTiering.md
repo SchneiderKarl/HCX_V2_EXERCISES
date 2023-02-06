@@ -6,23 +6,35 @@
   - [Table of contents](#table-of-contents)
   - [Add Partitions to the Sales table](#add-partitions-to-the-sales-table)
   - [Create Data Lake table](#create-data-lake-table)
-  - [Exercise](#exercise)
+  - [Insert data into Data Lake table](#insert-data-into-data-lake-table)
 
 ## Add Partitions to the Sales table
 
-1. Start in the Database Explorer and open a SQL console.
+1. 1. Start in the Database Explorer and open a SQL console.
+   2. Paste the following code into the console and run it.
 
+```sql
+ALTER  TABLE "hcx.db.DataIntegration::RT_SALES"
+PARTITION BY RANGE (SALES_DATE) (
+	PARTITION '2023-01-01' <= VALUES < '9999-12-31' COLUMN LOADABLE,
+	PARTITION '2022-01-01' <= VALUES < '2023-01-01' PAGE LOADABLE,
+	PARTITION '2021-01-01' <= VALUES < '2022-01-01' PAGE LOADABLE,
+	PARTITION OTHERS PAGE LOADABLE);
+```
 
+![img](Images/Image_DataTiering__01.png)
 
-2. Paste the following code into the console and run it. As you can see 4 partitions were created and the column loadable partition is completely stored in memory while the 3 page loadable partitions are partially stored in memory, so mostly in NSE.
+2. Run the following statement. As you can see 4 partitions were created and the column loadable partition is completely stored in memory while the 3 page loadable partitions are partially stored in memory, so mostly in NSE.
 
 ```sql
 SELECT TABLE_NAME,LOAD_UNIT,DISK_SIZE,DISK_SIZE_IN_PAGE_LOADABLE,RECORD_COUNT,LOADED FROM "PUBLIC"."M_TABLE_PARTITIONS";
 ```
 
+![img](Images/Image_DataTiering__02.png)
+
 ## Create Data Lake table
 
-1. sd. Please replace <YOUR_USER_ID> with your SAP ID.
+1. Insert the following code into the SQL console. Please replace **<YOUR_USER_ID>** with your SAP ID. You create a table with the same structure as the sales table in the data lake using the following statement. This will allow us to swap data to it
 
 ```sql
 CALL SYSHDL_HCX.REMOTE_EXECUTE('CREATE TABLE DL_SALES_<YOUR_USER_ID> ("SALES_ID" VARCHAR(11) NOT NULL,
@@ -40,63 +52,103 @@ CALL SYSHDL_HCX.REMOTE_EXECUTE('CREATE TABLE DL_SALES_<YOUR_USER_ID> ("SALES_ID"
 )');
 ```
 
-2. sd
+![img](Images/Image_DataTiering__03.png)
 
-1) 1) Click on **View** in the Menu Bar
+2. Switch back to BAS.
+   1) Click on **View** in the Menu Bar
    2) Then click on **Command Palette...**
 
 ![img](Images/Image_DataIntegration__01.png)
 
-2) Type in `SAP HANA: Create HANA Database Artifact` and select this option
+3. Type in `SAP HANA: Create HANA Database Artifact` and select this option
 
 ![img](Images/Image_DataIntegration__02.png)
 
-3) 1) Change the path to the **DataAnonymization*** folder, by clicking the folder icon
+4. 1) Change the path to the **DataTiering*** folder, by clicking the folder icon
    2) Click on **..** to navigate to a higher level
 
-![img](Images/Image_DataAnonymization__01.png)
+![img](Images/Image_DataTiering__04.png)
 
-4) Click on **DataAnonymization** and confirm with **OK**
+5. Click on **DataTiering** and confirm with **OK**
 
-![img](Images/Image_DataAnonymization__02.png)
+![img](Images/Image_DataTiering__05.png)
 
-4) Create SAP HANA Database Artifact wizard:
-   1) **Path**: `/home/user/projects/HCX_V2/db/src/DataIntegration`
-   2) **Namespace**: `hcx.db.DataIntegration` (should be automatically filled)
+6. Create SAP HANA Database Artifact wizard:
+   1) **Path**: `/home/user/projects/HCX_V2/db/src/DataTiering`
+   2) **Namespace**: `hcx.db.DataTiering` (should be automatically filled)
    3) **Database Version**: `HANA Cloud`
    4) **Artifact type**: `Virtual Table (hdbvirtualtable)`
-   5) **Name**: `VT_PRODUCTS`
+   5) **Name**: `VT_DL_SALES`
    6) Click **Create**
 
-![img](Images/Image_DataIntegration__03.png)
+![img](Images/Image_DataTiering__06.png)
 
-5) Now click again on the **VT_PRODUCTS.hdbvirtualtable** file. Click on **Auto-fix**.
-   Virtual Table Editor wizard: (You can use the three dots to get suggestions)
+7. Click on **Auto-fix**.
+   Virtual Table Editor wizard: (You can use the three dots to get suggestions, make sure to replace **<YOUR_USER_ID>** with your SAP ID)
    1) **Virtual table name**: `hcx.db.DataTiering::VT_DL_SALES`
    2) **Remoute source name**: `SYSHDL_HCX_SOURCE`
    3) **Database name**: `<NULL>`
    4) **Schema name**: `SYSHDL_HCX`
    5) **Object name**: `DL_SALES_<YOUR_USER_ID>`
 
-![img](Images/Image_DataIntegration__07.png)
+![img](Images/Image_DataTiering__08.png)
 
+## Insert data into Data Lake table
 
+1. Swtich back to Database Explorer and run the following statement. This inserts all data from the years 2020 and older into the Data Lake table.
 
 ```sql
 INSERT INTO "hcx.db.DataTiering::VT_DL_SALES" SELECT * FROM "hcx.db.DataIntegration::RT_SALES" WHERE SALES_DATE<'2021-01-01';
 ```
 
+![img](Images/Image_DataTiering__09.png)
+
+2. Query the virtual table pointing to the Data Lake table to make sure that the data is outsourced
+
 ```sql
 SELECT * FROM "hcx.db.DataTiering::VT_DL_SALES";
 ```
+
+![img](Images/Image_DataTiering__10.png)
+
+3. Now that the data is outsourced, we can delete it from the database table. Run the following statement.
 
 ```sql
 DELETE FROM "hcx.db.DataIntegration::RT_SALES" WHERE SALES_DATE<'2021-01-01';
 ```
 
+![img](Images/Image_DataTiering__11.png)
+<!-- 
+4. If we now display the effective partitions of the database table again, we see that the others partition no longer contains any data.
+
 ```sql
 SELECT TABLE_NAME,LOAD_UNIT,DISK_SIZE,DISK_SIZE_IN_PAGE_LOADABLE,RECORD_COUNT,LOADED FROM "PUBLIC"."M_TABLE_PARTITIONS";
 ```
+
+![img](Images/Image_DataTiering__12.png)
+-->
+
+4. But if we want to work with all data again, we now create a view that links these two tables via a UNION. Switch back to BAS and create
+   1) Click on **View** in the Menu Bar
+   2) Then click on **Command Palette...**
+
+![img](Images/Image_DataIntegration__01.png)
+
+5. Type in `SAP HANA: Create HANA Database Artifact` and select this option
+
+![img](Images/Image_DataIntegration__02.png)
+
+6. Create SAP HANA Database Artifact wizard:
+   1) **Path**: `/home/user/projects/HCX_V2/db/src/DataTiering`
+   2) **Namespace**: `hcx.db.DataTiering` (should be automatically filled)
+   3) **Database Version**: `HANA Cloud`
+   4) **Artifact type**: `SQL View (hdbview)`
+   5) **Name**: `SALES_UNION`
+   6) Click **Create**
+
+![img](Images/Image_DataTiering__13.png)
+
+7. Paste the following code and deploy it.
 
 ```sql
 VIEW "hcx.db.DataTiering::SALES_UNION" AS
@@ -107,11 +159,19 @@ SELECT *
 FROM "hcx.db.DataTiering::VT_DL_SALES";
 ```
 
+![img](Images/Image_DataTiering__14.png)
+
+8. Switch back to Database Explorer and make sure that all data is available again via the view you just created. Run the following statement.
+
 ```sql
 SELECT COUNT(*) FROM "hcx.db.DataTiering::SALES_UNION";
 ```
 
+![img](Images/Image_DataTiering__15.png)
 
+< [Back to Overview](README.md)
+
+<!-- 
 ## Exercise
 - Use table created in Data Integration (with Date compoenent, eg Transaction Date and Status closed,open,new,in Progress)
 - DBX
@@ -204,3 +264,4 @@ drop table "HCX_V2_HDI_DB_2"."SALESNOTNULL"
 
 
 select * from "PUBLIC"."M_TABLE_PARTITIONS"
+-->
