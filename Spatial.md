@@ -161,7 +161,7 @@ COLUMN TABLE "hcx.db.Spatial::WORLD_COUNTRIES" (
 
 ```sql
 SELECT *
-FROM "hcx.db::DataIntegration::RT_CUSTOMERS";
+FROM "hcx.db.DataIntegration::RT_CUSTOMERS";
 ```
 
 ![img](Images/Image_Spatial__13.png)
@@ -400,7 +400,7 @@ ORDER BY COUNT DESC;
 
 ![img](Images/Image_Spatial__32.png)
 
-
+<!-- 
 ---
 > todo
 ---
@@ -426,6 +426,6 @@ WITH clustered_data AS (
 SELECT ST_CollectAggr(SHAPE)
 FROM clustered_data;
 ```
-
+-->
 
 < [Back to Overview](README.md)
