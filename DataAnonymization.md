@@ -183,7 +183,7 @@ As evidenced, the anonymization process has been successful as there are signifi
 
 3) Create SAP HANA Database Artifact wizard:
    1) **Path**: `/home/user/projects/HCX_V2/db/src/DataAnonymization`
-   2) **Namespace**: `hcx.db.DataIntegration` (should be automatically filled)
+   2) **Namespace**: `hcx.db.DataAnonymization` (should be automatically filled)
    3) **Database Version**: `HANA Cloud`
    4) **Artifact type**: `SQL View (hdbview)`
    5) **Name**: `SALARYANON_DP`
